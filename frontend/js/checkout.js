@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (!Auth.isLoggedIn()) {
     showError('Debes iniciar sesión para completar la compra.', true);
+    const loginLink = document.getElementById('checkout-login-link');
+    if (loginLink) loginLink.href = '/login.html?next=/checkout.html';
     return;
   }
 
