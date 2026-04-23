@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De Cero a Comediante — Curso de Stand-Up Comedy</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">🎤 De Cero a Comediante</div>
+    <div class="nav-links">
+      <a href="#modulos">Módulos</a>
+      <a href="#precio">Precio</a>
+      <a href="login.html" class="btn btn-outline">Iniciar sesión</a>
+      <a href="checkout.html" class="btn btn-primary">Inscribirme</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <span class="badge">Nuevo curso disponible</span>
+      <h1>Aprende Stand-Up Comedy<br /><span class="highlight">desde cero</span></h1>
+      <p class="hero-sub">Técnicas profesionales, estructura de bits, manejo del miedo escénico y tu primer open mic. Todo en un solo curso.</p>
+      <div class="hero-cta">
+        <a href="checkout.html" class="btn btn-primary btn-lg">Quiero inscribirme</a>
+        <a href="#modulos" class="btn btn-ghost btn-lg">Ver el programa</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>8</strong><span>Módulos</span></div>
+        <div class="stat"><strong>+40</strong><span>Lecciones</span></div>
+        <div class="stat"><strong>Acceso</strong><span>de por vida</span></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="mic-graphic">🎤</div>
+    </div>
+  </header>
+
+  <section id="modulos" class="modules-section">
+    <div class="container">
+      <h2>Programa del curso</h2>
+      <p class="section-sub">Un recorrido completo de la comedia: desde la teoría hasta el escenario.</p>
+      <div class="modules-grid" id="modules-list">
+        <!-- Populated by JS or static fallback below -->
+        <div class="module-card">
+          <div class="module-num">01</div>
+          <h3>Los fundamentos de la comedia</h3>
+          <p>Qué hace reír y por qué. La estructura del chiste, timing y premisa.</p>
+        </div>
+        <div class="module-card">
+          <div class="module-num">02</div>
+          <h3>Tu voz como comediante</h3>
+          <p>Encuentra tu punto de vista único. Autobiografía cómica y observación.</p>
+        </div>
+        <div class="module-card">
+          <div class="module-num">03</div>
+          <h3>Escritura de material</h3>
+          <p>Técnicas de generación de ideas, la regla del tres, misdirection.</p>
+        </div>
+        <div class="module-card">
+          <div class="module-num">04</div>
+          <h3>Construcción de bits</h3>
+          <p>Del tag al callback. Cómo alargar y potenciar un chiste.</p>
+        </div>
+        <div class="module-card">
+          <div class="module-num">05</div>
+          <h3>Performance y entrega</h3>
+          <p>Lenguaje corporal, pausa, inflexión vocal y ritmo escénico.</p>
+        </div>
+        <div class="module-card">
+          <div class="module-num">06</div>
+          <h3>Manejo del miedo escénico</h3>
+          <p>Herramientas psicológicas y prácticas para subir al mic con confianza.</p>
+        </div>
+        <div class="module-card">
+          <div class="module-num">07</div>
+          <h3>El open mic</h3>
+          <p>Cómo encontrar, prepararte y aprovechar tu primer open mic.</p>
+        </div>
+        <div class="module-card">
+          <div class="module-num">08</div>
+          <h3>Carrera en la comedia</h3>
+          <p>Redes, grabación de especiales y cómo vivir del stand-up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="precio" class="pricing-section">
+    <div class="container">
+      <h2>Invierte en tu primer acto</h2>
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3>Acceso completo al curso</h3>
+          <div class="price" id="course-price">$199.000 COP</div>
+          <span class="price-note">Pago único · Acceso de por vida</span>
+        </div>
+        <ul class="pricing-features">
+          <li>✓ +40 lecciones en video HD</li>
+          <li>✓ Ejercicios prácticos por módulo</li>
+          <li>✓ Material descargable</li>
+          <li>✓ Acceso de por vida + actualizaciones</li>
+          <li>✓ Garantía de satisfacción 14 días</li>
+        </ul>
+        <a href="checkout.html" class="btn btn-primary btn-lg btn-full">Inscribirme ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2024 De Cero a Comediante. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script>
+    // If logged in, adjust CTA to go directly to dashboard
+    const token = localStorage.getItem("dca_token");
+    if (token) {
+      document.querySelectorAll('a[href="checkout.html"]').forEach(el => {
+        el.href = "dashboard.html";
+        el.textContent = el.textContent.includes("Inscribirme") ? "Ir al curso" : el.textContent;
+      });
+    }
+
+    // Load real price from API
+    API.get("/courses").then(courses => {
+      if (courses && courses.length > 0) {
+        const price = courses[0].price_cop;
+        if (price) {
+          document.getElementById("course-price").textContent =
+            "$" + Number(price).toLocaleString("es-CO") + " COP";
+        }
+      }
+    }).catch(() => {});
+  </script>
+</body>
+</html>

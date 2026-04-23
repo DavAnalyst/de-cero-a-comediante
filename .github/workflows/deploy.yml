@@ -1,0 +1,42 @@
+name: Deploy to Hostinger VPS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+          pip install pytest pytest-flask
+      - name: Run tests
+        env:
+          DATABASE_URL: sqlite:///:memory:
+          SECRET_KEY: test_secret
+          JWT_SECRET_KEY: test_jwt
+          FLASK_ENV: testing
+        run: |
+          cd backend
+          pytest tests/ -v
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /var/www/de-cero-a-comediante
+            bash deploy/deploy.sh

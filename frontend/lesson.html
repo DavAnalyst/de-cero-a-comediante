@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lección — De Cero a Comediante</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/player.css" />
+</head>
+<body class="lesson-page">
+  <nav class="lesson-nav">
+    <a href="dashboard.html" class="nav-back">← Volver al curso</a>
+    <div class="nav-brand">🎤 De Cero a Comediante</div>
+    <div class="lesson-progress-pill" id="lesson-progress-pill"></div>
+  </nav>
+
+  <main class="lesson-layout">
+    <div class="video-section">
+      <div class="video-wrapper" id="video-wrapper">
+        <div class="video-loading" id="video-loading">
+          <div class="spinner"></div>
+          <p>Cargando video...</p>
+        </div>
+        <video
+          id="lesson-video"
+          class="hidden"
+          controls
+          playsinline
+          preload="metadata"
+        ></video>
+        <div class="completion-overlay hidden" id="completion-overlay">
+          <div class="completion-content">
+            <div class="completion-emoji">🎉</div>
+            <h2>¡Lección completada!</h2>
+            <div class="completion-actions">
+              <button id="next-lesson-btn" class="btn btn-primary">Siguiente lección →</button>
+              <a href="dashboard.html" class="btn btn-ghost">Ver progreso</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson-meta" id="lesson-meta">
+        <h1 id="lesson-title">Cargando...</h1>
+        <p id="lesson-description" class="lesson-desc"></p>
+      </div>
+    </div>
+
+    <aside class="lesson-sidebar">
+      <div class="exercise-section hidden" id="exercise-section">
+        <h3>Ejercicio práctico</h3>
+        <div id="exercise-content" class="exercise-content"></div>
+      </div>
+      <div class="nav-lessons">
+        <button id="prev-btn" class="btn btn-ghost btn-full hidden">← Anterior</button>
+        <button id="next-btn" class="btn btn-primary btn-full hidden">Siguiente →</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/player.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin — De Cero a Comediante</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-page">
+  <nav class="admin-nav">
+    <div class="nav-brand">🎤 Admin — De Cero a Comediante</div>
+    <div class="nav-actions">
+      <span id="admin-user-name"></span>
+      <button id="admin-logout" class="btn btn-ghost btn-sm">Salir</button>
+    </div>
+  </nav>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <ul class="admin-menu">
+        <li><button class="admin-menu-item active" data-section="courses">Cursos</button></li>
+        <li><button class="admin-menu-item" data-section="lessons">Lecciones</button></li>
+        <li><button class="admin-menu-item" data-section="users">Usuarios</button></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+      <!-- Courses section -->
+      <section id="section-courses" class="admin-section">
+        <div class="section-header">
+          <h1>Cursos</h1>
+          <button id="btn-new-course" class="btn btn-primary">+ Nuevo curso</button>
+        </div>
+        <div id="courses-table-wrapper">
+          <table class="admin-table">
+            <thead><tr>
+              <th>Título</th><th>Precio</th><th>Publicado</th><th>Acciones</th>
+            </tr></thead>
+            <tbody id="courses-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Lessons section -->
+      <section id="section-lessons" class="admin-section hidden">
+        <div class="section-header">
+          <h1>Lecciones</h1>
+          <div class="section-filters">
+            <select id="filter-course" class="form-select">
+              <option value="">— Seleccionar curso —</option>
+            </select>
+            <button id="btn-new-lesson" class="btn btn-primary" disabled>+ Nueva lección</button>
+          </div>
+        </div>
+        <table class="admin-table">
+          <thead><tr>
+            <th>Módulo</th><th>Orden</th><th>Título</th><th>Proveedor</th><th>Acciones</th>
+          </tr></thead>
+          <tbody id="lessons-tbody"></tbody>
+        </table>
+      </section>
+
+      <!-- Users section -->
+      <section id="section-users" class="admin-section hidden">
+        <div class="section-header"><h1>Usuarios</h1></div>
+        <table class="admin-table">
+          <thead><tr>
+            <th>Nombre</th><th>Email</th><th>Admin</th><th>Registro</th>
+          </tr></thead>
+          <tbody id="users-tbody"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal: Course form -->
+  <div id="modal-course" class="modal hidden">
+    <div class="modal-card">
+      <h2 id="modal-course-title">Nuevo curso</h2>
+      <form id="course-form" novalidate>
+        <input type="hidden" id="course-id" />
+        <div class="form-group">
+          <label>Título</label>
+          <input type="text" id="course-title-input" required />
+        </div>
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea id="course-desc-input" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Precio (COP)</label>
+          <input type="number" id="course-price-input" min="0" />
+        </div>
+        <div class="form-group checkbox-group">
+          <label><input type="checkbox" id="course-published-input" /> Publicado</label>
+        </div>
+        <div id="course-form-error" class="form-error hidden"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="btn-cancel-course">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Lesson form -->
+  <div id="modal-lesson" class="modal hidden">
+    <div class="modal-card">
+      <h2 id="modal-lesson-title">Nueva lección</h2>
+      <form id="lesson-form" novalidate>
+        <input type="hidden" id="lesson-id" />
+        <input type="hidden" id="lesson-course-id" />
+        <div class="form-row">
+          <div class="form-group">
+            <label>Módulo #</label>
+            <input type="number" id="lesson-module-num" min="1" required />
+          </div>
+          <div class="form-group">
+            <label>Nombre del módulo</label>
+            <input type="text" id="lesson-module-name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Orden en el módulo</label>
+          <input type="number" id="lesson-order" min="1" required />
+        </div>
+        <div class="form-group">
+          <label>Título</label>
+          <input type="text" id="lesson-title-input" required />
+        </div>
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea id="lesson-desc-input" rows="3"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Proveedor de video</label>
+            <select id="lesson-provider">
+              <option value="cloudinary">Cloudinary</option>
+              <option value="bunny">Bunny.net</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Video ID / public_id</label>
+            <input type="text" id="lesson-video-id" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Duración (segundos)</label>
+          <input type="number" id="lesson-duration" min="0" />
+        </div>
+        <div class="form-group checkbox-group">
+          <label><input type="checkbox" id="lesson-has-exercise" /> Tiene ejercicio</label>
+        </div>
+        <div class="form-group" id="exercise-content-group">
+          <label>Contenido del ejercicio (Markdown)</label>
+          <textarea id="lesson-exercise-content" rows="5"></textarea>
+        </div>
+        <div id="lesson-form-error" class="form-error hidden"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="btn-cancel-lesson">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

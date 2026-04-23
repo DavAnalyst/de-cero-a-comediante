@@ -1,0 +1,33 @@
+# Entorno virtual
+backend/venv/
+venv/
+
+# Variables de entorno con credenciales — NUNCA subir
+backend/.env
+.env
+
+# Base de datos local
+backend/*.db
+*.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Flask-Migrate — incluir versiones en git para que el deploy pueda migrar
+# backend/migrations/versions/
+
+# Logs
+*.log
+backend/flask.log
+frontend/frontend.log
+
+# OS
+.DS_Store
+Thumbs.db

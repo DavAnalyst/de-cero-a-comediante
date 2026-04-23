@@ -1,0 +1,26 @@
+[Unit]
+Description=Gunicorn — De Cero a Comediante Flask App
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/de-cero-a-comediante/backend
+EnvironmentFile=/var/www/de-cero-a-comediante/backend/.env
+RuntimeDirectory=gunicorn
+ExecStart=/var/www/de-cero-a-comediante/venv/bin/gunicorn \
+    --workers 3 \
+    --bind unix:/run/gunicorn/dca.sock \
+    --timeout 120 \
+    --access-logfile /var/log/gunicorn/dca_access.log \
+    --error-logfile /var/log/gunicorn/dca_error.log \
+    run:app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago seguro — De Cero a Comediante</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="checkout-page">
+  <nav class="navbar">
+    <div class="nav-brand">🎤 De Cero a Comediante</div>
+    <a href="index.html" class="btn btn-ghost btn-sm">← Volver</a>
+  </nav>
+
+  <main class="checkout-layout">
+    <div class="checkout-summary">
+      <h1>Resumen de compra</h1>
+      <div class="checkout-course-card">
+        <div class="checkout-course-icon">🎤</div>
+        <div class="checkout-course-info">
+          <h2 id="checkout-course-title">De Cero a Comediante</h2>
+          <p>Curso completo · Acceso de por vida</p>
+          <ul class="checkout-features">
+            <li>✓ +40 lecciones en video</li>
+            <li>✓ Ejercicios prácticos</li>
+            <li>✓ Actualizaciones gratuitas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="checkout-total">
+        <span>Total</span>
+        <strong id="checkout-price">$199.000 COP</strong>
+      </div>
+      <p class="checkout-guarantee">🔒 Pago 100% seguro · Garantía de 14 días</p>
+    </div>
+
+    <div class="checkout-payment">
+      <div id="checkout-loading" class="checkout-loader">
+        <div class="spinner"></div>
+        <p>Preparando pago seguro...</p>
+      </div>
+      <div id="checkout-error" class="checkout-error hidden">
+        <p id="checkout-error-msg"></p>
+        <a href="login.html" class="btn btn-primary" id="checkout-login-link">Iniciar sesión</a>
+      </div>
+      <div id="wompi-container" class="hidden"></div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
