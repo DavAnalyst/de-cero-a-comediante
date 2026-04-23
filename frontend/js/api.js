@@ -1,9 +1,8 @@
 // Central fetch wrapper. Attaches JWT automatically and handles 401 redirects.
 const API = (() => {
-  // En producción Nginx hace el proxy, aquí apunta directo al Flask de dev
   const BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:5000/api'
-    : '/api';
+    : 'https://de-cero-a-comediante-production.up.railway.app/api';
   const TOKEN_KEY = 'dca_token';
 
   function getToken() {
