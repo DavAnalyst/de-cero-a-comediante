@@ -38,6 +38,10 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_POOL_PRE_PING = True
+    SQLALCHEMY_POOL_RECYCLE = 280
+    SQLALCHEMY_POOL_SIZE = 5
+    SQLALCHEMY_MAX_OVERFLOW = 2
 
 
 class TestingConfig(Config):
