@@ -9,7 +9,10 @@
 </head>
 <body class="admin-page">
   <nav class="admin-nav">
-    <div class="nav-brand">🎤 Admin — De Cero a Comediante</div>
+    <div class="nav-brand">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+      Admin — De Cero a Comediante
+    </div>
     <div class="nav-actions">
       <span id="admin-user-name"></span>
       <button id="admin-logout" class="btn btn-ghost btn-sm">Salir</button>
@@ -30,7 +33,10 @@
       <section id="section-courses" class="admin-section">
         <div class="section-header">
           <h1>Cursos</h1>
-          <button id="btn-new-course" class="btn btn-primary">+ Nuevo curso</button>
+          <button id="btn-new-course" class="btn btn-primary">
+            <svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nuevo curso
+          </button>
         </div>
         <div id="courses-table-wrapper">
           <table class="admin-table">
@@ -50,7 +56,10 @@
             <select id="filter-course" class="form-select">
               <option value="">— Seleccionar curso —</option>
             </select>
-            <button id="btn-new-lesson" class="btn btn-primary" disabled>+ Nueva lección</button>
+            <button id="btn-new-lesson" class="btn btn-primary" disabled>
+              <svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Nueva lección
+            </button>
           </div>
         </div>
         <table class="admin-table">

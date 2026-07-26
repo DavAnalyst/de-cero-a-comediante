@@ -9,7 +9,10 @@
 </head>
 <body class="dashboard-page">
   <nav class="top-nav">
-    <div class="nav-brand">🎤 De Cero a Comediante</div>
+    <div class="nav-brand">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+      De Cero a Comediante
+    </div>
     <div class="nav-user">
       <span id="user-name">Cargando...</span>
       <button id="logout-btn" class="btn btn-ghost btn-sm">Salir</button>
@@ -34,13 +37,18 @@
         <!-- Populated by dashboard.js -->
       </nav>
       <div class="sidebar-footer">
-        <a href="index.html" class="btn btn-ghost btn-sm">← Inicio</a>
+        <a href="index.html" class="btn btn-ghost btn-sm">
+          <svg class="icon" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Inicio
+        </a>
       </div>
     </aside>
 
     <section class="content-area">
       <div id="empty-state" class="empty-state">
-        <div class="empty-icon">🎤</div>
+        <div class="empty-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+        </div>
         <h2>Bienvenido/a al curso</h2>
         <p>Selecciona una lección del panel izquierdo para comenzar.</p>
         <button id="continue-btn" class="btn btn-primary btn-lg hidden">Continuar donde lo dejé</button>

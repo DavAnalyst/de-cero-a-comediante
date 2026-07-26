@@ -69,13 +69,27 @@
   justify-content: center;
 }
 .completion-content { text-align: center; padding: 2rem; }
-.completion-emoji { font-size: 4rem; margin-bottom: .75rem; animation: pop .4s ease; }
+.completion-icon {
+  width: 80px; height: 80px;
+  margin: 0 auto .75rem;
+  border-radius: 50%;
+  background: var(--green-bg);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pop .4s ease;
+}
+.completion-icon .icon { width: 40px; height: 40px; stroke-width: 2.5; }
 @keyframes pop {
   0%   { transform: scale(0); opacity: 0; }
   70%  { transform: scale(1.2); }
   100% { transform: scale(1); opacity: 1; }
 }
-.completion-content h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+@media (prefers-reduced-motion: reduce) {
+  .completion-icon { animation: none; }
+}
+.completion-content h2 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #fff; }
 .completion-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
 .lesson-meta { }

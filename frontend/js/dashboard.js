@@ -89,7 +89,7 @@ function renderSidebar(modules, courseId) {
     header.innerHTML = `
       <span>${mod.module_num}. ${mod.module_name || 'Módulo ' + mod.module_num}</span>
       <span class="module-progress-pill">${completed}/${total}</span>
-      <i class="chevron">›</i>`;
+      <i class="chevron"><svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></i>`;
 
     const list = document.createElement('div');
     list.className = 'lessons-list';
@@ -98,7 +98,9 @@ function renderSidebar(modules, courseId) {
       const item = document.createElement('div');
       item.className = `lesson-item${lesson.completed ? ' completed' : ''}`;
       item.innerHTML = `
-        <span class="lesson-check">${lesson.completed ? '✓' : '○'}</span>
+        <span class="lesson-check">${lesson.completed
+          ? '<svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
+          : '<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>'}</span>
         <span class="lesson-title-text">${lesson.title}</span>
         ${lesson.duration_seconds ? `<span class="lesson-duration">${_fmtDuration(lesson.duration_seconds)}</span>` : ''}`;
       item.addEventListener('click', () => {
@@ -149,7 +151,9 @@ function renderModuleCards(modules, courseId) {
       const card = document.createElement('div');
       card.className = `lesson-card${lesson.completed ? ' completed-card' : ''}`;
       card.innerHTML = `
-        <div class="lesson-card-icon">${lesson.completed ? '✓' : '▶'}</div>
+        <div class="lesson-card-icon">${lesson.completed
+          ? '<svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>'
+          : '<svg class="icon" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>'}</div>
         <div class="lesson-card-info">
           <h3>${lesson.title}</h3>
           ${lesson.description ? `<p>${lesson.description}</p>` : ''}
@@ -180,7 +184,7 @@ function showNotEnrolled() {
   const el = document.getElementById('empty-state');
   if (el) {
     el.innerHTML = `
-      <div class="empty-icon">🎤</div>
+      <div class="empty-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></div>
       <h2>Aún no tienes acceso</h2>
       <p>Completa tu inscripción para ver el contenido del curso.</p>
       <a href="/checkout.html" class="btn btn-primary btn-lg" style="margin-top:1.5rem">Inscribirme ahora</a>`;

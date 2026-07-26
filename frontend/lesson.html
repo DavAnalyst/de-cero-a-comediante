@@ -9,8 +9,14 @@
 </head>
 <body class="lesson-page">
   <nav class="lesson-nav">
-    <a href="dashboard.html" class="nav-back">← Volver al curso</a>
-    <div class="nav-brand">🎤 De Cero a Comediante</div>
+    <a href="dashboard.html" class="nav-back">
+      <svg class="icon" viewBox="0 0 24 24" style="display:inline;vertical-align:-3px;width:16px;height:16px"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Volver al curso
+    </a>
+    <div class="nav-brand">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+      De Cero a Comediante
+    </div>
     <div class="lesson-progress-pill" id="lesson-progress-pill"></div>
   </nav>
 
@@ -30,10 +36,15 @@
         ></video>
         <div class="completion-overlay hidden" id="completion-overlay">
           <div class="completion-content">
-            <div class="completion-emoji">🎉</div>
+            <div class="completion-icon">
+              <svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
             <h2>¡Lección completada!</h2>
             <div class="completion-actions">
-              <button id="next-lesson-btn" class="btn btn-primary">Siguiente lección →</button>
+              <button id="next-lesson-btn" class="btn btn-primary">
+                Siguiente lección
+                <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
               <a href="dashboard.html" class="btn btn-ghost">Ver progreso</a>
             </div>
           </div>
@@ -52,8 +63,14 @@
         <div id="exercise-content" class="exercise-content"></div>
       </div>
       <div class="nav-lessons">
-        <button id="prev-btn" class="btn btn-ghost btn-full hidden">← Anterior</button>
-        <button id="next-btn" class="btn btn-primary btn-full hidden">Siguiente →</button>
+        <button id="prev-btn" class="btn btn-ghost btn-full hidden">
+          <svg class="icon" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Anterior
+        </button>
+        <button id="next-btn" class="btn btn-primary btn-full hidden">
+          Siguiente
+          <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
       </div>
     </aside>
   </main>
